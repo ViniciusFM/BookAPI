@@ -1,65 +1,65 @@
-# Book API <img src="static/img/book.svg"> — ver em [🇧🇷](README-pt_BR.md)
+# Book API <img src="static/img/book.svg"> — see in [🇺🇸](README-en_US.md)
 
-This repository implements an example of a Web API using the microframework [Flask](https://flask.palletsprojects.com/) to manage the [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) operations for a bookstore system. The service uses an [SQLite](https://www.sqlite.org/) database, which is built from the mapping of the [Book](#object) class via [Flask-SQLAlchemy](https://flask-sqlalchemy.readthedocs.io/en/stable/). The database is created on the first execution of the server.
+Este repositório implementa um exemplo de uma API Web, utilizando o microframework [Flask](https://flask.palletsprojects.com/), com o intuito de gerenciar o [CRUD](https://pt.wikipedia.org/wiki/CRUD) para um sistema de livrarias. O serviço utiliza um banco de dados [SQLite](https://www.sqlite.org/) que é construído a partir do mapeamento da classe [Book](#objeto) via [Flask-SQLAlchemy](https://flask-sqlalchemy.readthedocs.io/en/stable/). O banco é criado na primeira execução do servidor.
 
-*Note: This is a project created for learning purposes*
+*OBS: Este é um produto criado apenas para fins educativos*
 
-## How to run BookAPI
+## Como rodar o BookAPI
 
-To run **BookAPI**, it is recommended that you first create a virtual environment ([*virtualenv*](https://virtualenv.pypa.io/en/latest/user_guide.html)) so that the libraries used in this example do not interfere with your system's default libraries.
+Para rodar o **BookAPI** é recomendável que você crie primeiro um ambiente virtual ([*virtualenv*](https://virtualenv.pypa.io/en/latest/user_guide.html)) para que as bibliotecas utilizadas neste exemplo não interfiram na configuração de bibliotecas padrões do seu sistema.
 
-### Setting up a virtual environment (*virtualenv*)
+### Preparando um ambiente virtual (*virtualenv*)
 
-1) First, install the `virtualenv` tool via `pip`:
+1) Antes de tudo você irá instalar via `pip` a ferramenta `virtualenv`.
 ```bash
 pip install virtualenv
 ```
 
-2) After installation, create your virtual environment in this repository's directory. Here, the chosen name is `.venv`:
+2) Após a instalação, crie no diretório deste repositório o seu ambiente virtual. Aqui o nome escolhido foi `.venv`:
 ```bash
 virtualenv .venv
 ```
 
-3) To activate the virtual environment, use one of the following commands:
+3) Para ativar o ambiente virtual, utilize um dos comandos abaixo.
 
 ```bash
-# Linux / macOS
+# linux / mac
 source .venv/bin/activate
 
-# Windows
+# windows
 ...
 .\.venv\Scripts\activate
 ```
 
-- *Note: This step must be repeated every time you want to use the environment created for this repository.*
+- *OBS: Esse passo deverá ser repetido toda vez em que se desejar utilizar o ambiente criado para este repositório.*
 
-4) To ensure the environment is activated, check if the command line prompt includes `(.venv)`, as in the example:
+4) Para se certificar de que o ambiente foi ativado verifique se no início da linha de comando há a presença do termo `(.venv)`, como no exemplo:
 
 ```bash
-(.venv) user@linux:~/BookAPI$
+(.venv) user@linux:~/BookAPI$ 
 ```
 
-### Installing dependencies via *pip*
+### Instalando dependências via *pip*
 
-Install the necessary libraries to run **BookAPI** using the command below. If you are using a [virtual environment](#setting-up-a-virtual-environment-virtualenv), make sure that `(.venv)` appears in the command line prompt.
+Instale as bibliotecas necessárias para rodar **BookAPI** com a linha de comando abaixo. Caso esteja utilizando uma [ambiente virtual](#preparando-um-ambiente-virtual-virtualenv), certifique-se antes de existir na linha de comando o termo `(.venv)`.
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### Running
+### Executando
 
-The following command starts the server in *debugging mode*. If you are using a [virtual environment](#setting-up-a-virtual-environment-virtualenv), ensure that `(.venv)` appears in the command line prompt.
+A linha abaixo inicia o servidor em *modo debugging*. Caso esteja utilizando uma [ambiente virtual](#preparando-um-ambiente-virtual-virtualenv), certifique-se antes de existir na linha de comando o termo `(.venv)`.
 
 ```bash
 flask run --debug
 ```
 
-## API Documentation
+## Documentação da API
 
-### Object
+### Objeto
 
-The [Book](app.py) class in Python and its JSON representation:
+A classe [Book](app.py) em Python e a sua representação em JSON:
 
 ```python
 class Book(db.Model):
@@ -74,32 +74,32 @@ class Book(db.Model):
 ```JSON
 {
     "id": 1,                       // integer
-    "title": "A book title",      // string
+    "title": "Um título de livro", // string
     "price": 19.99,                // float
     "soldout": false               // boolean
 }
 ```
 
-### Routes
+### Rotas
 
 #### Index
 
-Returns an HTML page with book visualization functionalities.
+Retorna um HTML com funcionalidades de visualização dos livros.
 
 ```plain
 Route: /
 Method: GET
 Input: None
-Output: HTML
+Output: html
 ```
 
-* Output:
+* Saída:
 
 <img style="border-radius: 5px" src="screenshots/ss-01.png">
 
 #### Get Books
 
-Returns a JSON Array containing all books stored in the database.
+Retorna um Array de JSON contendo todos os livros cadastrados na base de dados.
 
 ```plain
 Route: /get-books
@@ -108,39 +108,39 @@ Input: None
 Output: JSON Array
 ```
 
-* Example output:
+* Exemplo de saída:
 ```json
 [
     {
         "id": 1,
         "price": 50.0,
         "soldout": false,
-        "title": "Neno Vasco by Neno Vasco: autobiographical fragments of an anarchist"
+        "title": "Neno Vasco por Neno Vasco: fragmentos autobiográficos de um anarquista"
     },
     {
         "id": 2,
         "price": 38.9,
         "soldout": false,
-        "title": "Harry Potter and the Sorcerer's Stone"
+        "title": "Harry Potter e a Pedra Filosofal"
     },
     {
         "id": 3,
         "price": 39.15,
         "soldout": true,
-        "title": "My Sweet Orange Tree"
+        "title": "O Meu Pé de Laranja Lima"
     },
     {
         "id": 4,
         "price": 29.9,
         "soldout": false,
-        "title": "Barren Lives"
+        "title": "Vidas secas"
     }
 ]
 ```
 
 #### Insert Books
 
-Provides a method to insert new books into the database.
+Fornece um meio de inserção de novos livros na base de dados.
 
 ```plain
 Route: /new-book
@@ -149,17 +149,17 @@ Input: JSON
 Output: Status 200
 ```
 
-* Example input:
+* Exemplo de entrada:
 ```json
 {
-    "title": "Barren Lives",
+    "title": "Vidas secas",
     "price": 29.9
 }
 ```
 
 #### Delete Books
 
-Provides a method to remove books from the database.
+Fornece um meio de remoção de livros da base de dados.
 
 ```plain
 Route: /del-book/<id>
@@ -169,13 +169,13 @@ Output: Status 200
 Error: Status 204 if book not found
 ```
 
-* Example input: `http://127.0.0.1/del-book/2`
+* Exemplo de entrada: `http://127.0.0.1/del-book/2`
 
 #### Update Book
 
-Provides a method to update all details of a specific book in the database.
- - Returns JSON of the updated book.
- - Returns 204 if the book is not found.
+Fornece um meio de atualizar todos os dados de um determinado livro na base de dados. 
+ - Retorna JSON do livro atualizado.
+ - Retorna 204 se o livro não for encontrado.
 
 ```plain
 Route: /update-book/<id>
@@ -185,23 +185,22 @@ Output: JSON
 Error: Status 204 if book not found
 ```
 
-* Example input:
+* Exemplo de entrada:
 
 ```json
 {
-    "title": "new title",  // optional
-    "price": 34.0,         // optional
-    "soldout": true        // optional
+    "title" : "new title",  // optional
+    "price" : 34.0,         // optional
+    "soldout": true         // optional
 }
 ```
-
-*Note: The input parameters are optional, meaning there is no need to include all of them in a single update request.*
+*OBS: os parâmetros de entrada são opcionais. Isto é, não há necessidade de declarar todos em uma mesma requisição de update.*
 
 #### Update Status
 
-Updates the "sold out" (*soldout*) status in the database.
- - Returns JSON of the updated book.
- - Returns 204 if the book is not found.
+Atualiza o status de "vendido" (*soldout*) na base de dados.
+ - Retorna JSON do livro atualizado.
+ - Retorna 204 se o livro não for encontrado.
 
 ```plain
 Route: /update-book/<id>/soldout/<boolval>
@@ -210,11 +209,10 @@ Input: <id> & <boolval>
 Output: Status 200
 ```
 
-* Example input: `http://127.0.0.1/update-book/1/soldout/1`
+* Exemplo de entrada: `http://127.0.0.1/update-book/1/soldout/1`
 
-*Note: **boolval** must be 1 (true) or 0 (false)*
+*OBS: **boolval** deve ser 1 (true) ou 0 (false)*
 
 <hr>
 
-Author: [Vinícius F. Maciel](https://www.viniciusfm.pro.br)
-
+Autor: [Vinícius F. Maciel](https://www.viniciusfm.pro.br)
