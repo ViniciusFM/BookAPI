@@ -55,6 +55,8 @@ A linha abaixo inicia o servidor em *modo debugging*. Caso esteja utilizando uma
 flask run --debug
 ```
 
+Um serviço HTTP será iniciado na porta 5000. Acesse pelo seu navegador a URL `http://127.0.0.1:5000`.
+
 ## Documentação da API
 
 ### Objeto
@@ -169,7 +171,7 @@ Output: Status 200
 Error: Status 204 if book not found
 ```
 
-* Exemplo de entrada: `http://127.0.0.1/del-book/2`
+* Exemplo de entrada: `http://127.0.0.1:5000/del-book/2`
 
 #### Update Book
 
@@ -209,7 +211,7 @@ Input: <id> & <boolval>
 Output: Status 200
 ```
 
-* Exemplo de entrada: `http://127.0.0.1/update-book/1/soldout/1`
+* Exemplo de entrada: `http://127.0.0.1:5000/update-book/1/soldout/1`
 
 *OBS: **boolval** deve ser 1 (true) ou 0 (false)*
 
